@@ -8,16 +8,14 @@ date: October 17, 2023
 
 Links for the complimentary parts of this course: 
 
-- [Zoom](https://go.fzj.de/intro-sc-ai-2023-zoom)
-- [Slack](https://go.fzj.de/intro-sc-ai-2023-slack)
-- [JSC Training Page](https://go.fzj.de/intro-sc-ai-2023-course)
-- [Judoor project page invite](https://go.fzj.de/intro-sc-ai-2023-project-join)
+- [INM Training Page](http://csn.inm.kfa-juelich.de/inm2023/)
+- [Judoor project page invite](https://judoor.fz-juelich.de/projects/join/training2336)
 - [This document: https://helmholtzai-fzj.github.io/2023-deep-learning-for-neuroscience/](https://helmholtzai-fzj.github.io/2023-deep-learning-for-neuroscience/)
 - Our mailing list for [AI news](https://lists.fz-juelich.de/mailman/listinfo/ml)
-- [Survey at the end of the course](https://go.fzj.de/intro-sc-ai-2023-survey)
 - [Virtual Environment template](https://gitlab.jsc.fz-juelich.de/kesselheim1/sc_venv_template)
-- [SOURCE CODE OF THE WHOLE COURSE on Github - Including presentations](https://go.fzj.de/intro-sc-ai-2023-repo)
+- [SOURCE CODE OF THE WHOLE COURSE on Github - Including presentations](https://github.com/HelmholtzAI-FZJ/2023-deep-learning-for-neuroscience)
 - [Other courses at JSC](https://go.fzj.de/intro-sc-ai-2023-other-courses)
+
 ![](images/Logo_FZ_Juelich_rgb_Schutzzone_transparent.svg)
 
 
@@ -50,28 +48,12 @@ Links for the complimentary parts of this course:
 
 ---
 
-### Schedule for day 1
-
-| Time          | Title        |
-| ------------- | -----------  |
-| 09:00 - 09:15 | Welcome      |
-| 09:15 - 10:00 | Introduction |
-| 10:00 - 10:15 | Coffee break |
-| 10:00 - 10:30 | Judoor, Keys |
-| 10:30 - 11:00 | SSH, Jupyter, VS Code |
-| 11:00 - 11:15 | Coffee Break |
-| 11:15 - 12:00 | Running services on the login and compute nodes | 
-| 12:00 - 12:15 | Coffee Break |
-| 12:30 - 13:00 | Sync (everyone should be at the same point) |
-
----
-
 ### Note
 
 Please open this document on your own browser! We will need it for the exercises.
-[http://go.fzj.de/intro-sc-ai-2023](http://go.fzj.de/intro-sc-ai-2023)
+[https://go.fzj.de/inm-ml](https://go.fzj.de/inm-ml)
 
-![Mobile friendly, but you need it on your computer, really](images/intro-sc-ai-2023-qr.png)
+![Mobile friendly, but you need it on your computer, really](images/inm-qr.png){ width=350px }
 
 ---
 
@@ -87,27 +69,12 @@ Please open this document on your own browser! We will need it for the exercises
 - Supercomputer: A damn lot of computers bound together locally😒
   - with a fancy network 🤯
 
----
-
-### Anatomy of a supercomputer
-
--  Login Nodes: Normal machines, for compilation, data transfer,  scripting, etc. No GPUs.
-- Compute Nodes: Guess what? 
-  - For compute! With GPUs! 🤩
-- High-speed, ultra-low-latency network
-- Shared networked file systems
-- Some numbers we should (more or less) know about them:
-    - Nodes
-    - Cores, Single-core Performance
-    - RAM
-    - Network: Bandwidth, Latency
-    - Accelerators (e.g. GPUs)
 
 ---
 
 ### JUWELS Booster Compute Nodes
 
-- 936 Nodes
+- 936 Compute Nodes
 - 2x AMD EPYC Rome 7402 CPU 2.7 GHz (48 cores x 2 threads = 96 virtual cores/node)
 - 512 GiB memory
 - Network Mellanox HDR infiniband (FAST💨 and EXPENSIVE💸)
@@ -216,31 +183,12 @@ Please open this document on your own browser! We will need it for the exercises
 ### Connecting to JUWELS BOOSTER
 
 #### Getting compute time
-- Go to [https://go.fzj.de/intro-sc-ai-2023-project-join](https://go.fzj.de/intro-sc-ai-2023-project-join)
+- Go to [https://judoor.fz-juelich.de/projects/join/training2336](https://judoor.fz-juelich.de/projects/join/training2336)
 - Join the course project `training2326`
 - Sign the Usage Agreements ([Video](https://drive.google.com/file/d/1mEN1GmWyGFp75uMIi4d6Tpek2NC_X8eY/view))
 - Compute time allocation is based on compute projects. For every compute job, a compute project pays.
 - Time is measured in core-hours. One hour of Juwels BOOSTER is 48 core-hours.
 - Example: Job runs for 8 hours on 64 nodes of Juwels BOOSTER: 8 * 64 * 48 = 24576 core-h!
-
----
-
-## Jupyter
-
-[jupyter-jsc.fz-juelich.de](https://jupyter-jsc.fz-juelich.de)
-
-- Jupyter-JSC uses the queue 
-- When you are working on it, you are using project time ⌛️
-- *Yes, if you are just thinking and looking at the 📺, you are burning project time*🤦‍♂️
-- It's useful for small tests - not for full-fledged development 🙄
-
----
-
-## Jupyter
-
-#### Pay attention to the partition - DON'T RUN IT ON THE LOGIN NODE!!!
-
-![](images/jupyter-partition.png)
 
 ---
 
