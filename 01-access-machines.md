@@ -12,7 +12,7 @@ Links for the complimentary parts of this course:
 - [Slack](https://go.fzj.de/intro-sc-ai-2023-slack)
 - [JSC Training Page](https://go.fzj.de/intro-sc-ai-2023-course)
 - [Judoor project page invite](https://go.fzj.de/intro-sc-ai-2023-project-join)
-- [This document: http://go.fzj.de/intro-sc-ai-2023](http://go.fzj.de/intro-sc-ai-2023)
+- [This document: https://helmholtzai-fzj.github.io/2023-deep-learning-for-neuroscience/](https://helmholtzai-fzj.github.io/2023-deep-learning-for-neuroscience/)
 - Our mailing list for [AI news](https://lists.fz-juelich.de/mailman/listinfo/ml)
 - [Survey at the end of the course](https://go.fzj.de/intro-sc-ai-2023-survey)
 - [Virtual Environment template](https://gitlab.jsc.fz-juelich.de/kesselheim1/sc_venv_template)
@@ -727,7 +727,7 @@ Simple Linux Utility for Resource Management
 #SBATCH --error=error.%j
 #SBATCH --time=00:01:00          # For how long can it run?
 #SBATCH --partition=booster         # Machine partition
-#SBATCH --reservation=ai_on_sc_day1 # For today only
+#SBATCH --reservation=dl4neurosc # For today only
 
 module load Stages/2023
 module load GCC OpenMPI PyTorch  # Load the correct modules on the compute node(s)
@@ -777,7 +777,7 @@ squeue --me
 
 - Some partitions have reservations, which means that only certain users can use them at certain times.
 - For this course, we have:
-- Juwels Booster: `ai_on_sc_day1` and `ai_sc_day2`
+- Juwels Booster: `dl4neurosc`
 
 --- 
 
@@ -909,7 +909,7 @@ learn.fit_one_cycle(3, cbs=TensorBoardCallback('runs', trace_model=True))
 #SBATCH --error=error.%j
 #SBATCH --time=00:10:00
 #SBATCH --partition=booster
-#SBATCH --reservation=ai_on_sc_day1 # For today only
+#SBATCH --reservation=dl4neurosc # For today only
 
 cd /p/home/jusers/$USER/juwels/course/$USER
 source sc_venv_template/activate.sh # Now we finally use the fastai module
