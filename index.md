@@ -1,8 +1,8 @@
 ---
 author: Alexandre Strube // Sabrina Benassou
-title: Getting Started with AI on Supercomputers 
+title: Deep Learning for Neuroscience
 # subtitle: A primer in supercomputers`
-date: September 27, 2023
+date: October 17, 2023
 ---
 
 # Topics (as links)

@@ -1,8 +1,8 @@
 ---
 author: Alexandre Strube // Sabrina Benassou
-title: Getting Started with AI on Supercomputers 
+title: Parallelize Training
 subtitle: Parallelize Training
-date: December 13, 2023
+date: October 17, 2023
 ---
 
 ## We need to download some code
@@ -76,7 +76,7 @@ for entry in os.listdir(samples_dir):
             sample_path = os.path.join("ILSVRC/Data/CLS-LOC", split, syn_id, sample)
             data[sample_path] = target
 
-with open("/p/scratch/training2324/data/train_data.pkl", "wb") as f:
+with open("/p/scratch/training2326/data/train_data.pkl", "wb") as f:
     pickle.dump(data, f)
 ```
 
@@ -85,7 +85,7 @@ with open("/p/scratch/training2324/data/train_data.pkl", "wb") as f:
 ## ImageNet class
 
 ```python
-root = "/p/scratch/training2324/data/"
+root = "/p/scratch/training2326/data/"
 
 with open(os.path.join(root, "train_data.pkl"), "rb") as f:
     train_data = pickle.load(f)
@@ -197,7 +197,7 @@ transform = transforms.Compose([
 ])
 
 # 1. Organize the data
-datamodule = ImageNetDataModule("/p/scratch/training2324/data/", 256, \
+datamodule = ImageNetDataModule("/p/scratch/training2326/data/", 256, \
     int(os.getenv('SLURM_CPUS_PER_TASK')), transform)
 # 2. Build the model using desired Task
 model = resnet50Model()
@@ -221,7 +221,7 @@ trainer.save_checkpoint("image_classification_model.pt")
 #SBATCH --cpus-per-task=96
 #SBATCH --time=06:00:00
 #SBATCH --partition=booster
-#SBATCH --account=training2324
+#SBATCH --account=training2326
 #SBATCH --output=%j.out
 #SBATCH --error=%j.err
 #SBATCH --reservation=ai_on_sc_day2
@@ -280,7 +280,7 @@ real	342m11.864s
 #SBATCH --cpus-per-task=24            # Divide the number of cpus (96) by the number of GPUs (4)
 #SBATCH --time=02:00:00
 #SBATCH --partition=booster
-#SBATCH --account=training2324
+#SBATCH --account=training2326
 #SBATCH --output=%j.out
 #SBATCH --error=%j.err
 #SBATCH --reservation=ai_on_sc_day2
@@ -573,7 +573,7 @@ nnodes = os.getenv("SLURM_NNODES")
 4. Allow only one process to save checkpoints.
 
 - ```python
-datamodule = ImageNetDataModule("/p/scratch/training2324/data/", 256, \
+datamodule = ImageNetDataModule("/p/scratch/training2326/data/", 256, \
     int(os.getenv('SLURM_CPUS_PER_TASK')), transform)
 trainer = pl.Trainer(max_epochs=10,  accelerator="gpu", num_nodes=nnodes)
 trainer.fit(model, datamodule=datamodule)
@@ -593,7 +593,7 @@ transform = transforms.Compose([
 # 1. The number of nodes
 nnodes = os.getenv("SLURM_NNODES")
 # 2. Organize the data
-datamodule = ImageNetDataModule("/p/scratch/training2324/data/", 128, \
+datamodule = ImageNetDataModule("/p/scratch/training2326/data/", 128, \
     int(os.getenv('SLURM_CPUS_PER_TASK')), transform)
 # 3. Build the model using desired Task
 model = resnet50Model()
@@ -619,7 +619,7 @@ trainer.save_checkpoint("image_classification_model.pt")
 #SBATCH --cpus-per-task=24             # Divide the number of cpus (96) by the number of GPUs (4)
 #SBATCH --time=00:15:00
 #SBATCH --partition=booster
-#SBATCH --account=training2324
+#SBATCH --account=training2326
 #SBATCH --output=%j.out
 #SBATCH --error=%j.err
 #SBATCH --reservation=ai_on_sc_day2
