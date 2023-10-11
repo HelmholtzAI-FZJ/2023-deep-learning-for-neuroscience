@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --account=training2326
+#SBATCH --account=training2336
 #SBATCH --mail-user=MYUSER@fz-juelich.de
 #SBATCH --mail-type=ALL
 #SBATCH --nodes=1

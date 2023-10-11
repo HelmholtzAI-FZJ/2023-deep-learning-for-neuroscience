@@ -184,7 +184,7 @@ Please open this document on your own browser! We will need it for the exercises
 
 #### Getting compute time
 - Go to [https://judoor.fz-juelich.de/projects/join/training2336](https://judoor.fz-juelich.de/projects/join/training2336)
-- Join the course project `training2326`
+- Join the course project `training2336`
 - Sign the Usage Agreements ([Video](https://drive.google.com/file/d/1mEN1GmWyGFp75uMIi4d6Tpek2NC_X8eY/view))
 - Compute time allocation is based on compute projects. For every compute job, a compute project pays.
 - Time is measured in core-hours. One hour of Juwels BOOSTER is 48 core-hours.
@@ -411,7 +411,7 @@ strube1@juwels22~ $
 
 ```bash
 # Create a shortcut for the project on the home folder
-ln -s $PROJECT_training2326 ~/course
+ln -s $PROJECT_training2336 ~/course
 
 # Create a folder for myself
 mkdir course/$USER
@@ -666,7 +666,7 @@ Simple Linux Utility for Resource Management
 
 ``` {.bash .number-lines}
 #!/bin/bash
-#SBATCH --account=training2326           # Who pays?
+#SBATCH --account=training2336           # Who pays?
 #SBATCH --nodes=1                        # How many compute nodes
 #SBATCH --job-name=matrix-multiplication
 #SBATCH --ntasks-per-node=1              # How many mpi processes/node
@@ -846,7 +846,7 @@ learn.fit_one_cycle(3, cbs=TensorBoardCallback('runs', trace_model=True))
 
 ```bash
 #!/bin/bash
-#SBATCH --account=training2326
+#SBATCH --account=training2336
 #SBATCH --mail-user=MYUSER@fz-juelich.de
 #SBATCH --mail-type=ALL
 #SBATCH --nodes=1
@@ -1152,7 +1152,7 @@ On the supercomputer:
 srun --time=00:05:00 \
      --nodes=1 --ntasks=1 \
      --partition=booster \
-     --account training2326 \
+     --account training2336 \
      --cpu_bind=none \
      --pty /bin/bash -i
 
