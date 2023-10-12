@@ -141,7 +141,7 @@ transform = transforms.Compose([
 # 1. Organize the data
 datamodule = ImageNetDataModule("/p/scratch/training2336/data/", 256, \
     int(os.getenv('SLURM_CPUS_PER_TASK')), transform)
-# 2. Build the model using desired Task
+# 2. Build the model 
 model = resnet50Model()
 # 3. Create the trainer
 trainer = pl.Trainer(max_epochs=10,  accelerator="gpu")
@@ -242,17 +242,11 @@ real	89m15.923s
 
 ## DEMO
 
----
-
-## That's it for data parallel!
-
-- Copy of the model on each GPU
-- Use different data for each GPU
-- Everything else is the same
-- Average after each epoch
-- Update of the weights
-
 --- 
+
+## Now, What's about multi-node training?
+
+---
 
 ## Data Parallel - Multi Node
 
@@ -451,6 +445,16 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3  # Very important to make the GPUs visible
 
 ## DEMO
 
+---
+
+## That's it for data parallel!
+
+- Copy of the model on each GPU
+- Use different data for each GPU
+- Everything else is the same
+- Average after each epoch
+- Update of the weights
+
 --- 
 
 ## TensorBoard
@@ -464,6 +468,10 @@ self.log("training_loss", train_loss)
 --- 
 
 ## TensorBoard
+
+```bash
+ssh  -L 16000:localhost:16000 booster
+```
 
 ```bash
 source $HOME/course/$USER/sc_venv_template/activate.sh
