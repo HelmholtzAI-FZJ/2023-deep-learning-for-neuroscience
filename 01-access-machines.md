@@ -8,7 +8,7 @@ date: October 17, 2023
 
 Links for the complimentary parts of this course: 
 
-- [INM Training Page](http://csn.inm.kfa-juelich.de/inm2023/)
+- [INM Retreat Page](http://csn.inm.kfa-juelich.de/inm2023/)
 - [Judoor project page invite](https://judoor.fz-juelich.de/projects/join/training2336)
 - [This document: https://helmholtzai-fzj.github.io/2023-deep-learning-for-neuroscience/](https://helmholtzai-fzj.github.io/2023-deep-learning-for-neuroscience/)
 - Our mailing list for [AI news](https://lists.fz-juelich.de/mailman/listinfo/ml)
@@ -196,218 +196,60 @@ Please open this document on your own browser! We will need it for the exercises
 
 ---
 
-## VSCode
+#### Jupyter-JSC
 
-- [Download VScode: code.visualstudio.com](https://code.visualstudio.com/download)
-- Install and run it
-  - On the local terminal, type `code`
-- Install [Remote Development Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack)
-- Install [Remote: SSH](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh)
-- If you have Windows, you need WSL as explained on the email.
+- Today we will use the terminal and the code editor from Jupyter-JSC:
+  - [https://jupyter-jsc.fz-juelich.de/](https://jupyter-jsc.fz-juelich.de/)
+- It's okay if you already have access, just follow along 😇
+- ![](images/qr-jupyter.png){ width=350px }
 
 ---
 
-## VSCode
-
-### Now with the remote explorer tab
-![](images/vscode-welcome.png)
-
+![](images/jupyter-1.png)
 
 ---
 
-#### SSH
-- SSH is a secure shell (terminal) connection to another computer
-- You connect from your computer to the LOGIN NODE
-- Security is given by public/private keys
-- A connection to the supercomputer needs a 
-    1. Key,
-    2. Configuration
-    3. Key/IP address known to the supercomputer
+![](images/jupyter-2.png)
 
 ---
 
-### SSH
-
-#### Create key in VSCode's Terminal (menu View->Terminal)
-
-```bash
-mkdir ~/.ssh/
-ssh-keygen -a 100 -t ed25519 -f ~/.ssh/id_ed25519-JSC
-```
-
-```bash
-$ ssh-keygen -a 100 -t ed25519 -f ~/.ssh/id_ed25519-JSC
-Generating public/private ed25519 key pair.
-Enter passphrase (empty for no passphrase): 
-Enter same passphrase again: 
-Your identification has been saved in /Users/strube1/.ssh/id_ed25519-JSC
-Your public key has been saved in /Users/strube1/.ssh/id_ed25519-JSC.pub
-The key fingerprint is:
-SHA256:EGNNC1NTaN8fHwpfuZRPa50qXHmGcQjxp0JuU0ZA86U strube1@Strube-16
-The keys randomart image is:
-+--[ED25519 256]--+
-|      *++oo=o. . |
-|     . =+o .= o  |
-|      .... o.E..o|
-|       .  +.+o+B.|
-|        S  =o.o+B|
-|          . o*.B+|
-|          . . =  |
-|           o .   |
-|            .    |
-+----[SHA256]-----+
-```
+![](images/jupyter-3.png)
 
 ---
 
-### SSH
-
-#### Configure SSH session
-
-```bash
-code $HOME/.ssh/config
-```
+![](images/jupyter-4.png)
 
 ---
 
-### SSH
-
-#### Configure SSH session
-
-```bash
-Host booster
-        HostName juwels-booster.fz-juelich.de
-        User [MY_USERNAME]   # Here goes your username, not the word MY_USERNAME.
-        AddressFamily inet
-        IdentityFile ~/.ssh/id_ed25519-JSC
-```
-
-Copy contents to the config file and save it 
-
-**REPLACE [MY_USERNAME] WITH YOUR USERNAME!!! 🤦‍♂️**
+![](images/jupyter-5.png)
 
 ---
 
-### SSH
+### Jupyter
 
-####  JSC restricts from where you can login
-#### So we need to:
-1. Find our ip range
-2. Add the range and key to [Judoor](https://judoor.fz-juelich.de)
+- Double-click `$PROJECT`
+- Double-click `Terminal`
 
 ---
 
-### SSH
-
-#### Find your ip/name range
-
-Open **[https://www.whatismyip.com](https://www.whatismyip.com)**
+![](images/jupyter-6.png)
 
 ---
 
-### SSH
+### Jupyter
 
-#### Find your ip/name range
-
-![](images/whatismyip.png)
-
-- Let's keep this inside vscode: `code key.txt` and paste the number you got
+- Type `pwd`
+- It should be on the course project folder: `/p/project/training2336`
 
 ---
 
-### SSH
-
-Did everyone get their **own** ip address?
+![](images/jupyter-7.png)
 
 ---
 
-### SSH - EXAMPLE
 
-- I will use the number `93.199.55.163`
-- **YOUR NUMBER IS DIFFERENT**
-- Seriously
 
----
-
-### SSH - Example: `93.199.55.163`
-
-- Go to VSCode and make it simpler, replace the 2nd half with `"0.0/16"`:
-  - It was `93.199.55.163`
-  - Becomes `93.199.0.0/16` (with YOUR number, not with the example)
-- Add a `from=""` around it
-- So, it looks like this, now: `from="93.199.0.0/16"`
-- Add a second magic number, with a comma: `,10.0.0.0/8` 🧙‍♀️
-- I promise, the magic is worth it 🧝‍♂️ (If time allows)
-- In the end it looks like this: `from="93.199.0.0/16,10.0.0.0/8"` 🎬
-- Keep it open, we will use it later
-
----
-
-### SSH - Example: `93.199.0.0/16`
-
-#### Copy your ssh key
-- Terminal: `code ~/.ssh/id_ed25519-JSC.pub`
-- Something like this will open:
-
-- ```bash
-ssh-ed25519 AAAAC3NzaC1lZDE1NTA4AAAAIHaoOJF3gqXd7CV6wncoob0DL2OJNfvjgnHLKEniHV6F strube@demonstration.fz-juelich.de
-```
-
-- Paste this line at the same `key.txt` which you just opened
-
----
-
-### SSH
-
-#### Example: `93.199.0.0/16`
-
-- Put them together and copy again:
-- ```bash
-from="93.199.0.0/16,10.0.0.0/8" ssh-ed25519 AAAAC3NzaC1lZDE1NTA4AAAAIHaoOJF3gqXd7CV6wncoob0DL2OJNfvjgnHLKEniHV6F strube@demonstration.fz-juelich.de
-```
-
----
-
-### SSH
-
-- Let's add it on [Judoor](https://judoor.fz-juelich.de)
-- ![](images/manage-ssh-keys.png)
-- Do it for JUWELS and JUDAC with the same key
-
----
-
-### SSH
-
-#### Add new key to [Judoor](https://judoor.fz-juelich.de)
-
-![](images/manage-ssh-keys-from-and-key.png){ width=850px }
-
-This might take some minutes
-
----
-
-### SSH: Exercise
-
-That's it! Give it a try (and answer yes)
-
-```bash
-$ ssh booster
-The authenticity of host 'juwels22.fz-juelich.de (134.94.0.185)' cannot be established.
-ED25519 key fingerprint is SHA256:ASeu9MJbkFx3kL1FWrysz6+paaznGenChgEkUW8nRQU.
-This key is not known by any other names
-Are you sure you want to continue connecting (yes/no/[fingerprint])? Yes
-**************************************************************************
-*                            Welcome to JUWELS BOOSTER                   *
-**************************************************************************
-...
-...
-strube1@juwels22~ $ 
-```
-
----
-
-### SSH: Exercise 
-#### Make sure you are connected to the supercomputer
+### Terminal: Exercise
 
 ```bash
 # Create a shortcut for the project on the home folder
@@ -568,29 +410,9 @@ The following modules match your search criteria: "toml"
 ```
 ---
 
-## VSCode
-#### Editing files on the supercomputers
+## Jupyter
 
-![](images/vscode-remotes.png)
-
----
-
-## VSCode
-
-![](images/vscode-jusuf.png)
-
----
-
-## VSCode
-
-- You can have a terminal inside VSCode: 
-  - Go to the menu View->Terminal
-
---- 
-
-## VSCode
-
-- From the VSCode's terminal, navigate to your "course" folder and to the name you created earlier.
+- From the Jupyter's terminal, navigate to your "course" folder and to the name you created earlier.
 
 - ```bash
 cd $HOME/course/$USER
@@ -602,13 +424,15 @@ pwd
 ---
 
 ### Demo code
-#### Create a new file "`matrix.py`" on VSCode on Juwels BOOSTER
 
-```bash
-code matrix.py
-```
+- Make sure you are on the right folder with the `pwd` command
+- Create a new file 
+  - Save it with the name `matrix.py`
+- Paste this into the file:
 
-Paste this into the file:
+---
+
+### matrix.py
 
 ``` {.python .number-lines}
 import torch
@@ -623,13 +447,19 @@ result = torch.matmul(matrix1,matrix2)
 print("The result is:\n", result)
 ```
 
+
 ---
 
 ### How to run it on the login node
 
-```
+```bash
+# Load the modules we need for this code
+
 module load Stages/2023
 module load GCC OpenMPI PyTorch
+
+# Call the program
+
 python matrix.py
 ```
 
@@ -747,7 +577,7 @@ cat output.412169
 cat error.412169 
 ```
 
-Or simply open it on VSCode!
+Or simply open it on Jupyter!
 
 ---
 
@@ -1009,7 +839,7 @@ watch squeue --me
 
 ## Check output files
 
-- You can see them within VSCode
+- You can see them within Jupyter
 - ```bash
 The activation script must be sourced, otherwise the virtual environment will not work.
 Setting vars
@@ -1069,14 +899,12 @@ A tunnel which exposes the supercomputer's port 3000 as port 1234 locally](image
 
 ## Port forwarding demo:
 
-- On VSCode's terminal:
+- On Jupyter's notebook:
 - ```bash
-cd $HOME/course/$USER
-source sc_venv_template/activate.sh
-tensorboard --logdir=runs  --port=12345 serve
+%load_ext tensorboard
+%tensorboard --logdir /p/project/training2326/MYUSER/runs --port 8888
+notebook.display(port=8888, height=1000)
 ```
-- Note the tab `PORTS` next to the terminal 
-- On the browser: [http://localhost:12345](http://localhost:12345)
 
 ---
 
