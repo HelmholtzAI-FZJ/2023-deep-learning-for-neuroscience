@@ -141,7 +141,7 @@ transform = transforms.Compose([
 # 1. Organize the data
 datamodule = ImageNetDataModule("/p/scratch/training2336/data/", 256, \
     int(os.getenv('SLURM_CPUS_PER_TASK')), transform)
-# 2. Build the model using desired Task
+# 2. Build the model 
 model = resnet50Model()
 # 3. Create the trainer
 trainer = pl.Trainer(max_epochs=10,  accelerator="gpu")
@@ -242,17 +242,11 @@ real	89m15.923s
 
 ## DEMO
 
----
-
-## That's it for data parallel!
-
-- Copy of the model on each GPU
-- Use different data for each GPU
-- Everything else is the same
-- Average after each epoch
-- Update of the weights
-
 --- 
+
+## Now, What's about multi-node training?
+
+---
 
 ## Data Parallel - Multi Node
 
@@ -281,7 +275,7 @@ real	89m15.923s
     - Each process inits the model.
     - Each process performs a full forward and backward pass in parallel.
     - The gradients are synced and averaged across all processes.
-    - Each process updates its optimizer.
+    - Each process updates its parameters.
 
 --- 
 
@@ -451,6 +445,16 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3  # Very important to make the GPUs visible
 
 ## DEMO
 
+---
+
+## That's it for data parallel!
+
+- Copy of the model on each GPU
+- Use different data for each GPU
+- Everything else is the same
+- Average after each epoch
+- Update of the weights
+
 --- 
 
 ## TensorBoard
@@ -466,10 +470,11 @@ self.log("training_loss", train_loss)
 ## TensorBoard
 
 ```bash
-source $HOME/course/$USER/sc_venv_template/activate.sh
-tensorboard --logdir=[PATH_TO_TENSOR_BOARD] --port=16000
+%load_ext tensorboard
+%tensorboard --logdir [PATH_TO_TENSOR_BOARD] --port 8888
 ```
-![](images/tb.png){ width=750px }
+
+![](images/notebook_tb.png){ width=750px }
 
 ---
 
@@ -497,6 +502,12 @@ tensorboard --logdir=[PATH_TO_TENSOR_BOARD] --port=16000
 
 #### Feedback is more than welcome!
 
-#### Link to [other courses at JSC](https://go.fzj.de/intro-sc-ai-2023-other-courses)
+---
+
+## Courses at JSC
+- [Introduction to Explainable Deep Learning on Supercomputers](https://www.fz-juelich.de/en/ias/jsc/news/events/training-courses/2023/explainable-dl)
+![](images/xai.png)
+
+- #### Link to [other courses at JSC](https://go.fzj.de/intro-sc-ai-2023-other-courses)
 
 ---
