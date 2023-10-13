@@ -256,22 +256,22 @@ Please open this document on your own browser! We will need it for the exercises
 ln -s $PROJECT_training2336 ~/course
 
 # Create a folder for myself
-mkdir course/$USER
+mkdir $HOME/course/$USER
 
 # Enter course folder and
-cd ~/course/$USER
+cd $HOME/course/$USER
 
 # Where am I?
 pwd
 
 # We well need those later
-mkdir ~/course/$USER/.cache
-mkdir ~/course/$USER/.config
-mkdir ~/course/$USER/.fastai
+mkdir $HOME/course/$USER/.cache
+mkdir $HOME/course/$USER/.config
+mkdir $HOME/course/$USER/.fastai
 
-ln -s ~/course/$USER/.cache $HOME/
-ln -s ~/course/$USER/.config $HOME/
-ln -s ~/course/$USER/.fastai $HOME/
+ln -s $HOME/course/$USER/.cache $HOME/
+ln -s $HOME/course/$USER/.config $HOME/
+ln -s $HOME/course/$USER/.fastai $HOME/
 ```
 
 ---
@@ -492,7 +492,7 @@ Simple Linux Utility for Resource Management
 
 ### Slurm submission file example
 
-`code juwelsbooster-matrix.sbatch`
+File `juwelsbooster-matrix.sbatch`
 
 ``` {.bash .number-lines}
 #!/bin/bash
@@ -590,7 +590,6 @@ Or simply open it on Jupyter!
 ```bash
 cd $HOME/course/$USER
 git clone https://gitlab.jsc.fz-juelich.de/kesselheim1/sc_venv_template.git
-cd sc_venv_template
 ```
 
 ---
@@ -616,15 +615,15 @@ gym
 wandb
 ```
 
-- Run on the terminal: `./setup.sh`
+- Run on the terminal: `sc_venv_template/setup.sh`
 
 ---
 
 ### Example: Activating the virtual environment
 
-- `source ./activate.sh`
+- `source sc_venv_template/activate.sh`
 - ```python
-source ./activate.sh 
+source sc_venv_template/activate.sh 
 The activation script must be sourced, otherwise the virtual environment will not work.
 Setting vars
 The following modules were not unloaded:
@@ -689,7 +688,7 @@ learn.fit_one_cycle(3, cbs=TensorBoardCallback('runs', trace_model=True))
 #SBATCH --partition=booster
 #SBATCH --reservation=dl4neurosc # For today only
 
-cd /p/home/jusers/$USER/juwels/course/$USER
+cd $HOME/course/$USER
 source sc_venv_template/activate.sh # Now we finally use the fastai module
 
 srun python cats.py
@@ -873,27 +872,7 @@ learn.fit_one_cycle(3, cbs=TensorBoardCallback('runs', trace_model=True))
 
 ---
 
-## Example: Tensorboard
-
-- The command `tensorboard --logdir=runs  --port=9999 serve`
-- Opens a connection on port 9999... *OF THE SUPERCOMPUTER*.
-- This port is behind the firewall. You can't access it directly... 
-- We need to do bypass the firewall 🏴‍☠️
-  - SSH PORT FORWARDING
-
----
-
-## Example: Tensorboard
-
-![](images/supercomputer-firewall.svg)
-
----
-
-## Port Forwarding
-
-![
-A tunnel which exposes the supercomputer's port 3000 as port 1234 locally](images/port-forwarding.svg)
-
+## TODO ADD NEW SLIDE FOR NEW JUPYTER NOTEBOOK
 
 ---
 
@@ -902,7 +881,7 @@ A tunnel which exposes the supercomputer's port 3000 as port 1234 locally](image
 - On Jupyter's notebook:
 - ```bash
 %load_ext tensorboard
-%tensorboard --logdir /p/project/training2326/MYUSER/runs --port 8888
+%tensorboard --logdir /p/project/training2336/MYUSER/runs --port 8888
 notebook.display(port=8888, height=1000)
 ```
 
@@ -915,16 +894,15 @@ notebook.display(port=8888, height=1000)
 
 ---
 
-## Day 1 recap
+## Part 1 recap
 
 As of now, I expect you managed to: 
 
 - Stay awake for the most part of this morning 😴
-- Have your own ssh keys 🗝️🔐
-- A working ssh connection to the supercomputers 🖥️
-- Can edit and transfer files via VSCode 📝
+- A working jupyter connection to the supercomputers 🖥️
+- Can edit and transfer files via Jupyter 📝
 - Submit jobs and read results 📫
-- Access web services on the login nodes 🧙‍♀️
+- Access tensorboard on the login nodes 🧙‍♀️
 - Is ready to make great code! 💪
 
 ---
@@ -932,79 +910,6 @@ As of now, I expect you managed to:
 ## ANY QUESTIONS??
 
 #### Feedback is more than welcome!
-
----
-
-## Backup slides
-
----
-
-## There's more!
-
-- Remember the magic? 🧙‍♂️
-- Let's use it now to access the compute nodes directly!
-
----
-
-## Proxy Jump
-
-#### Accessing compute nodes directly
-
-- If we need to access some ports on the compute nodes
-- ![](images/proxyjump-magic.svg)
-
----
-
-## Proxy Jump - SSH Configuration
-
-Type on your machine "`code $HOME/.ssh/config`" and paste this at the end:
-
-```ssh
-
-# -- Compute Nodes --
-Host *.booster
-        User [ADD YOUR USERNAME HERE]
-        StrictHostKeyChecking no
-        IdentityFile ~/.ssh/id_ed25519-JSC
-        ProxyJump booster
-```        
-
----
-
-## Proxy Jump: Connecting to a node
-
-- Example: A service provides web interface on port 1234
-
-On the supercomputer:
-```bash
-srun --time=00:05:00 \
-     --nodes=1 --ntasks=1 \
-     --partition=booster \
-     --account training2336 \
-     --cpu_bind=none \
-     --pty /bin/bash -i
-
-bash-4.4$ hostname # This is running on a compute node of the supercomputer
-jwb0002
-
-bash-4.4$ cd $HOME/course/$USER
-bash-4.4$ source sc_venv_template/activate.sh
-bash-4.4$ tensorboard --logdir=runs  --port=9999 serve
-
-```
----
-
-## Proxy Jump 
-
-On your machine:
-
-- ```bash
-ssh -L :3334:localhost:9999 jwb002i.booster
-```
-
-- Mind the `i` letter I added at the end of the hostname
-
-- Now you can access the service on your local browser at [http://localhost:3334](http://localhost:3334)
 
 ---
 
