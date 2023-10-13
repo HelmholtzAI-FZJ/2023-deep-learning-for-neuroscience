@@ -880,6 +880,9 @@ the virtual environment</h3>
 <ul>
 <li
 class="fragment"><code>source sc_venv_template/activate.sh</code></li>
+<li class="fragment"><code>python</code></li>
+<li class="fragment"><code>import fastai</code></li>
+<li class="fragment"><code>fastai.__version__</code></li>
 <li class="fragment"><div class="sourceCode" id="cb17"><pre
 class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>source sc_venv_template<span class="op">/</span>activate.sh </span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>The activation script must be sourced, otherwise the virtual environment will <span class="kw">not</span> work.</span>
@@ -894,7 +897,8 @@ class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a h
 <span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>Type <span class="st">&quot;help&quot;</span>, <span class="st">&quot;copyright&quot;</span>, <span class="st">&quot;credits&quot;</span> <span class="kw">or</span> <span class="st">&quot;license&quot;</span> <span class="cf">for</span> more information.</span>
 <span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="im">import</span> fastai</span>
 <span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> fastai.__version__</span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="co">&#39;2.7.12&#39;</span></span></code></pre></div></li>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="co">&#39;2.7.12&#39;</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> exit()</span></code></pre></div></li>
 </ul>
 </section>
 <section class="slide level2">
@@ -943,7 +947,7 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href=
 <span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=1</span></span>
 <span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=output.%j</span></span>
 <span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --error=error.%j</span></span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=00:10:00</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=00:20:00</span></span>
 <span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --partition=booster</span></span>
 <span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --reservation=dl4neurosc # For today only</span></span>
 <span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a></span>

@@ -622,6 +622,9 @@ wandb
 ### Example: Activating the virtual environment
 
 - `source sc_venv_template/activate.sh`
+- `python`
+- `import fastai`
+- `fastai.__version__`
 - ```python
 source sc_venv_template/activate.sh 
 The activation script must be sourced, otherwise the virtual environment will not work.
@@ -637,6 +640,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> import fastai
 >>> fastai.__version__
 '2.7.12'
+>>> exit()
 ```
 
 ---
@@ -684,7 +688,7 @@ learn.fit_one_cycle(3, cbs=TensorBoardCallback('runs', trace_model=True))
 #SBATCH --cpus-per-task=1
 #SBATCH --output=output.%j
 #SBATCH --error=error.%j
-#SBATCH --time=00:10:00
+#SBATCH --time=00:20:00
 #SBATCH --partition=booster
 #SBATCH --reservation=dl4neurosc # For today only
 
