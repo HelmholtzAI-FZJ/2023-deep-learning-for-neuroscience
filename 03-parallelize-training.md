@@ -275,7 +275,7 @@ real	89m15.923s
     - Each process inits the model.
     - Each process performs a full forward and backward pass in parallel.
     - The gradients are synced and averaged across all processes.
-    - Each process updates its optimizer.
+    - Each process updates its parameters.
 
 --- 
 
@@ -470,14 +470,11 @@ self.log("training_loss", train_loss)
 ## TensorBoard
 
 ```bash
-ssh  -L 16000:localhost:16000 booster
+%load_ext tensorboard
+%tensorboard --logdir [PATH_TO_TENSOR_BOARD] --port 8888
 ```
 
-```bash
-source $HOME/course/$USER/sc_venv_template/activate.sh
-tensorboard --logdir=[PATH_TO_TENSOR_BOARD] --port=16000
-```
-![](images/tb.png){ width=750px }
+![](images/notebook_tb.png){ width=750px }
 
 ---
 
