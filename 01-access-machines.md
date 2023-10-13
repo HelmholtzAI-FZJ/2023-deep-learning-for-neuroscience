@@ -668,7 +668,7 @@ learn = vision_learner(dls, resnet34, metrics=accuracy)
 #
 # Trains the model for 3 epochs with this dataset
 learn.unfreeze()
-learn.fit_one_cycle(3, cbs=TensorBoardCallback('runs', trace_model=True))
+learn.fit_one_cycle(3, cbs=TensorBoardCallback('runs', trace_model=True, projector=True))
 ```
 
 ---
@@ -688,7 +688,7 @@ learn.fit_one_cycle(3, cbs=TensorBoardCallback('runs', trace_model=True))
 #SBATCH --cpus-per-task=1
 #SBATCH --output=output.%j
 #SBATCH --error=error.%j
-#SBATCH --time=00:20:00
+#SBATCH --time=00:10:00
 #SBATCH --partition=booster
 #SBATCH --reservation=dl4neurosc # For today only
 
@@ -876,24 +876,29 @@ learn.fit_one_cycle(3, cbs=TensorBoardCallback('runs', trace_model=True))
 
 ---
 
-## TODO ADD NEW SLIDE FOR NEW JUPYTER NOTEBOOK
+## Jupyter and TensorBoard
 
+- On Jupyter, make sure you are on the $PROJECT/YOUR USER folder
+- Right click on the files list and choose `New Notebook`
+- It will ask you for a kernel - Choose PyDeepLearning 2023.05
+- ![](images/jupyter-8.png)
 ---
 
-## Port forwarding demo:
+## TensorBoard:
 
 - On Jupyter's notebook:
 - ```bash
+import random
+MYPORT = random.randint(10000, 15000)
 %load_ext tensorboard
-%tensorboard --logdir /p/project/training2336/MYUSER/runs --port 8888
-notebook.display(port=8888, height=1000)
+%tensorboard --logdir /p/project/training2336/strube1/runs --port $MYPORT
 ```
 
 ---
 
 ### Tensorboard on Juwels Booster
 
-![](images/tensorboard-cats.png)
+![](images/jupyter-9.png)
 
 
 ---

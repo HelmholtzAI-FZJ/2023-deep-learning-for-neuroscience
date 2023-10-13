@@ -927,7 +927,7 @@ class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a h
 <span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
 <span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Trains the model for 3 epochs with this dataset</span></span>
 <span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>learn.unfreeze()</span>
-<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>learn.fit_one_cycle(<span class="dv">3</span>, cbs<span class="op">=</span>TensorBoardCallback(<span class="st">&#39;runs&#39;</span>, trace_model<span class="op">=</span><span class="va">True</span>))</span></code></pre></div></li>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>learn.fit_one_cycle(<span class="dv">3</span>, cbs<span class="op">=</span>TensorBoardCallback(<span class="st">&#39;runs&#39;</span>, trace_model<span class="op">=</span><span class="va">True</span>, projector<span class="op">=</span><span class="va">True</span>))</span></code></pre></div></li>
 </ul>
 </section>
 <section class="slide level2">
@@ -947,7 +947,7 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href=
 <span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=1</span></span>
 <span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=output.%j</span></span>
 <span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --error=error.%j</span></span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=00:20:00</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=00:10:00</span></span>
 <span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --partition=booster</span></span>
 <span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --reservation=dl4neurosc # For today only</span></span>
 <span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a></span>
@@ -1117,25 +1117,35 @@ example!</li>
 class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>learn.fit_one_cycle(<span class="dv">3</span>, cbs<span class="op">=</span>TensorBoardCallback(<span class="st">&#39;runs&#39;</span>, trace_model<span class="op">=</span><span class="va">True</span>))</span></code></pre></div></li>
 </ul>
 </section>
-<section id="todo-add-new-slide-for-new-jupyter-notebook"
-class="slide level2">
-<h2>TODO ADD NEW SLIDE FOR NEW JUPYTER NOTEBOOK</h2>
+<section id="jupyter-and-tensorboard" class="slide level2">
+<h2>Jupyter and TensorBoard</h2>
+<ul>
+<li class="fragment">On Jupyter, make sure you are on the $PROJECT/YOUR
+USER folder</li>
+<li class="fragment">Right click on the files list and choose
+<code>New Notebook</code></li>
+<li class="fragment">It will ask you for a kernel - Choose
+PyDeepLearning 2023.05</li>
+<li class="fragment"><h2 id="section-2"><img
+data-src="images/jupyter-8.png" /></h2></li>
+</ul>
 </section>
-<section id="port-forwarding-demo" class="slide level2">
-<h2>Port forwarding demo:</h2>
+<section id="tensorboard" class="slide level2">
+<h2>TensorBoard:</h2>
 <ul>
 <li class="fragment">On Jupyter’s notebook:</li>
 <li class="fragment"><div class="sourceCode" id="cb33"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%load_ext</span> tensorboard</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="ex">%tensorboard</span> <span class="at">--logdir</span> /p/project/training2336/MYUSER/runs <span class="at">--port</span> 8888</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="ex">notebook.display</span><span class="er">(</span><span class="va">port</span><span class="op">=</span>8888, <span class="va">height</span><span class="op">=</span>1000<span class="kw">)</span></span></code></pre></div></li>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">import</span> random</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="ex">MYPORT</span> = random.randint<span class="er">(</span><span class="ex">10000,</span> 15000<span class="kw">)</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="ex">%load_ext</span> tensorboard</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="ex">%tensorboard</span> <span class="at">--logdir</span> /p/project/training2336/strube1/runs <span class="at">--port</span> <span class="va">$MYPORT</span></span></code></pre></div></li>
 </ul>
 </section>
 <section class="slide level2">
 
 <h3 id="tensorboard-on-juwels-booster">Tensorboard on Juwels
 Booster</h3>
-<p><img data-src="images/tensorboard-cats.png" /></p>
+<p><img data-src="images/jupyter-9.png" /></p>
 </section>
 <section id="part-1-recap" class="slide level2">
 <h2>Part 1 recap</h2>
