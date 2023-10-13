@@ -502,6 +502,12 @@ self.log("training_loss", train_loss)
 
 #### Feedback is more than welcome!
 
-#### Link to [other courses at JSC](https://go.fzj.de/intro-sc-ai-2023-other-courses)
+---
+
+## Courses at JSC
+- [Introduction to Explainable Deep Learning on Supercomputers](https://www.fz-juelich.de/en/ias/jsc/news/events/training-courses/2023/explainable-dl)
+![](images/xai.png)
+
+- #### Link to [other courses at JSC](https://go.fzj.de/intro-sc-ai-2023-other-courses)
 
 ---
