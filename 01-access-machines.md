@@ -8,7 +8,7 @@ date: October 17, 2023
 
 Links for the complimentary parts of this course: 
 
-- [INM Retreat Page](http://csn.inm.kfa-juelich.de/inm2023/)
+- [INM Retreat Page](https://events.hifis.net/event/888/page/168-tutorials-17-october-2023)
 - [Judoor project page invite](https://judoor.fz-juelich.de/projects/join/training2336)
 - [This document: https://helmholtzai-fzj.github.io/2023-deep-learning-for-neuroscience/](https://helmholtzai-fzj.github.io/2023-deep-learning-for-neuroscience/)
 - Our mailing list for [AI news](https://lists.fz-juelich.de/mailman/listinfo/ml)
