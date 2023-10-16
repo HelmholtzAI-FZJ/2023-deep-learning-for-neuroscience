@@ -184,7 +184,7 @@ Please open this document on your own browser! We will need it for the exercises
 
 #### Getting compute time
 - Go to [https://judoor.fz-juelich.de/projects/join/training2336](https://judoor.fz-juelich.de/projects/join/training2336)
-- Join the course project `training2336`
+- Join the course project `training2336` (It might take 30+ mins, do it early!)
 - Sign the Usage Agreements ([Video](https://drive.google.com/file/d/1mEN1GmWyGFp75uMIi4d6Tpek2NC_X8eY/view))
 - Compute time allocation is based on compute projects. For every compute job, a compute project pays.
 - Time is measured in core-hours. One hour of Juwels BOOSTER is 48 core-hours.
