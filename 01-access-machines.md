@@ -8,7 +8,7 @@ date: October 17, 2023
 
 Links for the complimentary parts of this course: 
 
-- [INM Retreat Page](http://csn.inm.kfa-juelich.de/inm2023/)
+- [INM Retreat Page](https://events.hifis.net/event/888/page/168-tutorials-17-october-2023)
 - [Judoor project page invite](https://judoor.fz-juelich.de/projects/join/training2336)
 - [This document: https://helmholtzai-fzj.github.io/2023-deep-learning-for-neuroscience/](https://helmholtzai-fzj.github.io/2023-deep-learning-for-neuroscience/)
 - Our mailing list for [AI news](https://lists.fz-juelich.de/mailman/listinfo/ml)
@@ -184,7 +184,7 @@ Please open this document on your own browser! We will need it for the exercises
 
 #### Getting compute time
 - Go to [https://judoor.fz-juelich.de/projects/join/training2336](https://judoor.fz-juelich.de/projects/join/training2336)
-- Join the course project `training2336`
+- Join the course project `training2336` (It might take 30+ mins, do it early!)
 - Sign the Usage Agreements ([Video](https://drive.google.com/file/d/1mEN1GmWyGFp75uMIi4d6Tpek2NC_X8eY/view))
 - Compute time allocation is based on compute projects. For every compute job, a compute project pays.
 - Time is measured in core-hours. One hour of Juwels BOOSTER is 48 core-hours.
