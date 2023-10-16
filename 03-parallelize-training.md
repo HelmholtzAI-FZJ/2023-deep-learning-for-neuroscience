@@ -469,9 +469,11 @@ self.log("training_loss", train_loss)
 
 ## TensorBoard
 
-```bash
+```python
+import random
+MYPORT = random.randint(10000, 15000)
 %load_ext tensorboard
-%tensorboard --logdir [PATH_TO_TENSOR_BOARD] --port 8888
+%tensorboard --logdir lightning_logs/ --port $MYPORT
 ```
 
 ![](images/notebook_tb.png){ width=750px }
