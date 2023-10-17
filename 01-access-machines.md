@@ -68,6 +68,10 @@ Please open this document on your own browser! We will need it for the exercises
 - Compute cluster: Many computers bound together locally 
 - Supercomputer: A damn lot of computers bound together locally😒
   - with a fancy network 🤯
+- Important terms:
+  - Login node: It's where you connect and work
+  - Compute work: it's where magic happens 🪄🧙
+  - No, really, it's just where we compute stuff
 
 
 ---
@@ -921,6 +925,3 @@ As of now, I expect you managed to:
 #### Feedback is more than welcome!
 
 ---
-
-### Now that's really the end! 😓
-
